@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Website</title>
+    <style>
+        /* Slideshow styles */
+        .slideshow-header {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .slides {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: fade 1.5s ease-in-out;
+        }
+        .slides img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            transition: 0.3s;
+            user-select: none;
+            background-color: rgba(0,0,0,0.3);
+        }
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .prev {
+            left: 0;
+            border-radius: 0 3px 3px 0;
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+        
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            display: flex;
+            flex: 1;
+        }
+        nav {
+            width: 200px;
+            background-color: #f4f4f4;
+            padding: 15px;
+        }
+        nav a {
+            display: block;
+            margin: 10px 0;
+            color: #333;
+            text-decoration: none;
+        }
+        main {
+            flex: 1;
+            padding: 15px;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header class="slideshow-header">
+        <div class="slideshow-container">
+            <div class="slides fade">
+                <img src="https://picsum.photos/1200/400?random=1" alt="Slide 1">
+            </div>
+            <div class="slides fade">
+                <img src="https://picsum.photos/1200/400?random=2" alt="Slide 2">
+            </div>
+            <div class="slides fade">
+                <img src="https://picsum.photos/1200/400?random=3" alt="Slide 3">
+            </div>
+            <div class="slides fade">
+                <img src="https://picsum.photos/1200/400?random=4" alt="Slide 4">
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+    </header>
+    <div class="container">
+        <nav>
+            <nav>
+                <a href="index.html" target="konten">Halaman 1</a>
+                <a href="gallery.html" target="konten">Halaman 2</a>
+                <a href="halaman3.html" target="konten">Halaman 3</a>
+            </nav>
+        </nav>
+        <main>
+            <h1>Selamat Datang di Website Pameran Foto </h1>
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 Website Saya</p>
+    </footer>
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("slides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 5000); // Change image every 5 seconds
+        }
+
+        function plusSlides(n) {
+            slideIndex += n;
+            let slides = document.getElementsByClassName("slides");
+            if (slideIndex > slides.length) {slideIndex = 1}
+            if (slideIndex < 1) {slideIndex = slides.length}
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slides[slideIndex-1].style.display = "block";
+        }
+    </script>
+</body>
+</html>
